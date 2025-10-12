@@ -63,6 +63,23 @@ php artisan serve
      php artisan schedule:work
      ```
 
+   > ℹ️ **اگر با خطای `Class "Predis\Client" not found` روبه‌رو شدید**
+   >
+   > این خطا نشان می‌دهد که بسته‌ی Predis هنوز روی سیستم شما نصب نشده است. پس از دریافت آخرین نسخه‌ی پروژه، حتماً دستورات زیر را اجرا کنید تا وابستگی‌ها کامل نصب شوند:
+   >
+   > ```powershell
+   > composer install
+   > composer require predis/predis
+   > ```
+   >
+   > دستور دوم تنها زمانی اجرا می‌شود که پس از نصب اولیه هنوز بسته‌ی `predis/predis` در مسیر `vendor/` موجود نباشد. پس از نصب موفق، دوباره `php artisan key:generate` را اجرا کنید. اگر قصد استفاده از Redis را ندارید، کافی است در فایل `.env` مقادیر زیر را نگه دارید تا برنامه از درایورهای فایل و sync استفاده کند و هیچ اتصالی به Redis برقرار نشود:
+   >
+   > ```dotenv
+   > CACHE_DRIVER=file
+   > QUEUE_CONNECTION=sync
+   > REDIS_CLIENT=predis
+   > ```
+
 7. **دسترسی به پروژه**
    - پس از اجرای سرور محلی، از آدرس `http://127.0.0.1:8000` برای دسترسی به API یا Swagger (`/docs`) استفاده کنید.
    - اگر پروژه را به‌طور مستقیم زیر Apache قرار داده‌اید، آدرس `http://localhost` یا `http://localhost/liftapp/public` را استفاده کنید و مطمئن شوید Document Root روی پوشه `public/` تنظیم شده است.
