@@ -12,6 +12,63 @@ php artisan migrate --seed
 php artisan serve
 ```
 
+## نصب لوکال روی ویندوز (XAMPP)
+
+برای اجرای پروژه به‌صورت لوکال روی ویندوز با استفاده از XAMPP مراحل زیر را دنبال کنید:
+
+1. **نصب و آماده‌سازی XAMPP**
+   - آخرین نسخه XAMPP با PHP 8.2 یا جدیدتر را از [apachefriends.org](https://www.apachefriends.org/index.html) دانلود و نصب کنید.
+   - از طریق XAMPP Control Panel سرویس‌های **Apache** و **MySQL** را Start کنید.
+   - در صورت نیاز به فعال بودن اکستنشن‌هایی مانند `fileinfo`, `openssl`, `intl` آن‌ها را در فایل `php.ini` فعال و Apache را ریستارت کنید.
+
+2. **نصب Composer روی ویندوز**
+   - نصب‌کننده Composer for Windows را از [getcomposer.org](https://getcomposer.org/download/) دریافت و اجرا کنید.
+   - در مرحله انتخاب PHP، مسیر `php.exe` مربوط به نصب XAMPP (معمولاً `C:\xampp\php\php.exe`) را انتخاب کنید.
+   - بعد از نصب، در Command Prompt با دستور `composer -V` از نصب صحیح مطمئن شوید.
+
+3. **کلون و کپی سورس در مسیر XAMPP**
+   - پروژه را با Git کلون کنید یا فایل ZIP را دانلود و استخراج کنید.
+   - محتوای پروژه را در مسیری خارج از `htdocs` نگه دارید (مثلاً `C:\projects\elevatorid`) و با دستور `php artisan serve` اجرا کنید **یا** کل پروژه را به `C:\xampp\htdocs\elevatorid` منتقل کنید و Apache را به‌گونه‌ای تنظیم کنید که Document Root روی پوشه `public/` باشد.
+
+4. **پیکربندی محیط و نصب وابستگی‌ها**
+   - در Command Prompt یا PowerShell به مسیر پروژه بروید:
+
+     ```powershell
+     cd C:\projects\elevatorid
+     copy .env.example .env
+     composer install
+     php artisan key:generate
+     ```
+
+   - یک دیتابیس جدید با نام دلخواه در phpMyAdmin (آدرس `http://localhost/phpmyadmin`) بسازید و مقادیر `DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD` را در فایل `.env` تنظیم کنید (برای XAMPP معمولاً کاربر `root` بدون پسورد است).
+
+5. **اجرای مهاجرت‌ها و داده نمونه**
+   - پس از تنظیم اتصال دیتابیس، دستورات زیر را اجرا کنید تا جداول ساخته و داده‌های نمونه بارگذاری شوند:
+
+     ```powershell
+     php artisan migrate --seed
+     ```
+
+6. **اجرای سرویس‌ها**
+   - برای اجرای API در محیط توسعه از دستور زیر استفاده کنید:
+
+     ```powershell
+     php artisan serve --host=127.0.0.1 --port=8000
+     ```
+
+   - در صورت نیاز به اجرای صف‌ها و زمان‌بندی در محیط ویندوز می‌توانید پنجره‌های Command Prompt جداگانه باز کنید:
+
+     ```powershell
+     php artisan queue:work
+     php artisan schedule:work
+     ```
+
+7. **دسترسی به پروژه**
+   - پس از اجرای سرور محلی، از آدرس `http://127.0.0.1:8000` برای دسترسی به API یا Swagger (`/docs`) استفاده کنید.
+   - اگر پروژه را به‌طور مستقیم زیر Apache قرار داده‌اید، آدرس `http://localhost` یا `http://localhost/elevatorid/public` را استفاده کنید و مطمئن شوید Document Root روی پوشه `public/` تنظیم شده است.
+
+> نکته: اگر از `php artisan serve` استفاده می‌کنید نیازی به تغییر تنظیمات Apache نیست و تنها کافی است سرویس MySQL XAMPP در حال اجرا باشد.
+
 ## پیش‌نیازها
 
 - PHP 8.2+
