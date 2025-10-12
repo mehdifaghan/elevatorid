@@ -1,0 +1,2 @@
+#!/usr/bin/env php
+<?php echo "Laravel artisan placeholder" . PHP_EOL;
