@@ -1,6 +1,6 @@
 openapi: 3.0.3
 info:
-  title: ElevatorID API
+  title: LiftApp API
   version: 1.0.0
   description: >-
     مستند OpenAPI برای سامانه SaaS مدیریت سرویس و نگهداری آسانسور.

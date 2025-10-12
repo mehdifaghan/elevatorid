@@ -1,7 +1,7 @@
 services:
   app:
     build: .
-    container_name: elevatorid_app
+    container_name: liftapp_app
     ports:
       - "8000:8000"
     volumes:
@@ -18,8 +18,8 @@ services:
     image: mysql:8.0
     restart: unless-stopped
     environment:
-      MYSQL_DATABASE: elevatorid
-      MYSQL_USER: elevatorid
+      MYSQL_DATABASE: liftapp
+      MYSQL_USER: liftapp
       MYSQL_PASSWORD: secret
       MYSQL_ROOT_PASSWORD: secret
     ports:

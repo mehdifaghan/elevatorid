@@ -1,4 +1,4 @@
-# ElevatorID SaaS Backend
+# LiftApp SaaS Backend
 
 این مخزن حاوی اسکلت کامل یک بک‌اند SaaS برای مدیریت سرویس و نگهداری آسانسور است که بر اساس معماری پیشنهادی در مستندات پروژه طراحی شده است. هدف این پروژه فراهم کردن نقطه شروع کامل برای تیم مهندسی جهت راه‌اندازی یک سرویس چندمستاجری (Multi-tenant) با Laravel 11، Sanctum، Redis و MySQL است.
 
@@ -28,13 +28,13 @@ php artisan serve
 
 3. **کلون و کپی سورس در مسیر XAMPP**
    - پروژه را با Git کلون کنید یا فایل ZIP را دانلود و استخراج کنید.
-   - محتوای پروژه را در مسیری خارج از `htdocs` نگه دارید (مثلاً `C:\projects\elevatorid`) و با دستور `php artisan serve` اجرا کنید **یا** کل پروژه را به `C:\xampp\htdocs\elevatorid` منتقل کنید و Apache را به‌گونه‌ای تنظیم کنید که Document Root روی پوشه `public/` باشد.
+   - محتوای پروژه را در مسیری خارج از `htdocs` نگه دارید (مثلاً `C:\projects\liftapp`) و با دستور `php artisan serve` اجرا کنید **یا** کل پروژه را به `C:\xampp\htdocs\liftapp` منتقل کنید و Apache را به‌گونه‌ای تنظیم کنید که Document Root روی پوشه `public/` باشد.
 
 4. **پیکربندی محیط و نصب وابستگی‌ها**
    - در Command Prompt یا PowerShell به مسیر پروژه بروید:
 
      ```powershell
-     cd C:\projects\elevatorid
+     cd C:\projects\liftapp
      copy .env.example .env
      composer install
      php artisan key:generate
@@ -65,7 +65,7 @@ php artisan serve
 
 7. **دسترسی به پروژه**
    - پس از اجرای سرور محلی، از آدرس `http://127.0.0.1:8000` برای دسترسی به API یا Swagger (`/docs`) استفاده کنید.
-   - اگر پروژه را به‌طور مستقیم زیر Apache قرار داده‌اید، آدرس `http://localhost` یا `http://localhost/elevatorid/public` را استفاده کنید و مطمئن شوید Document Root روی پوشه `public/` تنظیم شده است.
+   - اگر پروژه را به‌طور مستقیم زیر Apache قرار داده‌اید، آدرس `http://localhost` یا `http://localhost/liftapp/public` را استفاده کنید و مطمئن شوید Document Root روی پوشه `public/` تنظیم شده است.
 
 > نکته: اگر از `php artisan serve` استفاده می‌کنید نیازی به تغییر تنظیمات Apache نیست و تنها کافی است سرویس MySQL XAMPP در حال اجرا باشد.
 
@@ -135,11 +135,11 @@ php artisan test
    - محتویات پروژه (از جمله پوشه‌های `vendor/` و `public/`) را در یک فایل ZIP قرار دهید.
 
 2. **بارگذاری روی هاست**
-   - از طریق File Manager یا FTP در cPanel وارد شوید و فایل ZIP را در پوشه‌ای غیر از `public_html` (مثلاً `~/elevatorid`) آپلود کنید.
+   - از طریق File Manager یا FTP در cPanel وارد شوید و فایل ZIP را در پوشه‌ای غیر از `public_html` (مثلاً `~/liftapp`) آپلود کنید.
    - فایل ZIP را Extract کنید و مطمئن شوید پوشه `storage/` و `bootstrap/cache/` مجوز نوشتن (755 یا 775) دارند.
 
 3. **پیکربندی Document Root**
-   - در بخش `Domains` یا `Subdomains`، دامنه یا زیردامنه‌ای ایجاد کنید که Document Root آن پوشه `public/` داخل پروژه باشد (مثلاً `~/elevatorid/public`).
+   - در بخش `Domains` یا `Subdomains`، دامنه یا زیردامنه‌ای ایجاد کنید که Document Root آن پوشه `public/` داخل پروژه باشد (مثلاً `~/liftapp/public`).
    - در صورت نبود دسترسی به تغییر Document Root، می‌توانید محتوای پوشه `public/` را به `public_html/` منتقل کرده و مسیرهای `index.php` و `.htaccess` را برای اشاره به مسیر اصلی پروژه به‌روزرسانی کنید.
 
 4. **تنظیم متغیرهای محیطی**
@@ -164,7 +164,7 @@ php artisan test
    - برای اجرای زمان‌بندی‌ها در `Cron Jobs` دستور زیر را با بازه زمانی دلخواه (مثلاً هر دقیقه) ثبت کنید:
 
      ```bash
-     * * * * * /usr/local/bin/php /home/USERNAME/elevatorid/artisan schedule:run >> /dev/null 2>&1
+     * * * * * /usr/local/bin/php /home/USERNAME/liftapp/artisan schedule:run >> /dev/null 2>&1
      ```
 
    - برای پردازش صف می‌توانید یک اسکریپت Supervisor روی سرور راه‌اندازی کنید یا از `php artisan queue:work` در یک فرآیند جداگانه استفاده کنید (در cPanel معمولاً با استفاده از Cron Job با دستور `php artisan queue:work --stop-when-empty`).

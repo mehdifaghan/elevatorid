@@ -1,6 +1,6 @@
 {
-    "name": "elevatorid/platform",
-    "description": "SaaS backend for elevator maintenance management",
+    "name": "liftapp/platform",
+    "description": "LiftApp SaaS backend for elevator maintenance management",
     "type": "project",
     "require": {
         "php": "^8.2",
