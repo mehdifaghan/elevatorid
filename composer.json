@@ -5,10 +5,9 @@
     "require": {
         "php": "^8.2",
         "laravel/framework": "^11.0",
-        "laravel/sanctum": "^3.3",
+        "laravel/sanctum": "^4.0",
         "laravel/telescope": "^5.0",
         "knuckleswtf/scribe": "^4.39",
-        "stancl/tenancy": "^4.0",
         "barryvdh/laravel-dompdf": "^2.0"
     },
     "require-dev": {
