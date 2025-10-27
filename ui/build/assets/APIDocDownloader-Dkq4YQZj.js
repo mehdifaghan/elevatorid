@@ -1,0 +1,16 @@
+import{$ as h,j as e,B as r,t as a}from"./index-tH8kGzNV.js";import{F as c}from"./file-text-DbNNqFYp.js";import{D as g}from"./download-BGqk_jGh.js";import{C as u}from"./check-DV_4N94Y.js";import{C as j}from"./copy-CIVXPvX_.js";const N=()=>{const[i,o]=h.useState(!1),l=async()=>{try{const p=await(await fetch("/docs/openapi-specification.yaml")).text(),x=new Blob([p],{type:"application/x-yaml"}),n=URL.createObjectURL(x),t=document.createElement("a");t.href=n,t.download="elevator-api-specification.yaml",document.body.appendChild(t),t.click(),document.body.removeChild(t),URL.revokeObjectURL(n),a.success("فایل مستندات API با موفقیت دانلود شد")}catch(s){console.error("خطا در دانلود فایل:",s),a.error("خطا در دانلود فایل")}},d=async()=>{try{await navigator.clipboard.writeText(`openapi: 3.0.3
+info:
+  title: سامانه جامع ردیابی قطعات و شناسنامه آسانسور
+  description: |
+    API مستندات برای سیستم جامع ردیابی قطعات و شناسنامه آسانسور
+    شامل پنل ادمین و کاربر با قابلیت‌های احراز هویت، مدیریت قطعات، ردیابی انتقال‌ها و گزارش‌گیری
+  version: 1.0.0
+  contact:
+    name: تیم توسعه
+    url: https://elevatorid.ieeu.ir
+  servers:
+    - url: https://elevatorid.ieeu.ir/v1
+      description: سرور اصلی
+
+# توضیح: این فقط بخشی از محتوای کامل است
+# برای دریافت فایل کامل از دکمه دانلود استفاده کنید`),o(!0),setTimeout(()=>o(!1),2e3),a.success("محتوای مستندات کپی شد")}catch(s){console.error("خطا در کپی کردن:",s),a.error("خطا در کپی کردن محتوا")}},m=()=>{window.open("https://editor.swagger.io/?url=https://elevatorid.ieeu.ir/v1/docs/openapi-specification.yaml","_blank")};return e.jsxs("div",{className:"bg-card border rounded-lg p-6 space-y-4",children:[e.jsxs("div",{className:"flex items-center gap-2 mb-4",children:[e.jsx(c,{className:"h-5 w-5 text-primary"}),e.jsx("h3",{className:"font-semibold",children:"مستندات API OpenAPI"})]}),e.jsx("p",{className:"text-sm text-muted-foreground mb-4",children:"مستندات کامل API شامل تمام endpoint های احراز هویت، مدیریت کاربران، قطعات، انتقال‌ها، آسانسورها، درخواست‌ها و گزارش‌گیری"}),e.jsxs("div",{className:"grid grid-cols-1 md:grid-cols-2 gap-3",children:[e.jsxs(r,{onClick:l,className:"flex items-center gap-2",children:[e.jsx(g,{className:"h-4 w-4"}),"دانلود فایل YAML"]}),e.jsx(r,{variant:"outline",onClick:d,className:"flex items-center gap-2",children:i?e.jsxs(e.Fragment,{children:[e.jsx(u,{className:"h-4 w-4 text-green-600"}),"کپی شد!"]}):e.jsxs(e.Fragment,{children:[e.jsx(j,{className:"h-4 w-4"}),"کپی محتوا"]})}),e.jsxs(r,{variant:"secondary",onClick:m,className:"flex items-center gap-2 md:col-span-2",children:[e.jsx(c,{className:"h-4 w-4"}),"مشاهده در Swagger Editor"]})]}),e.jsxs("div",{className:"mt-4 p-4 bg-muted/50 rounded-lg",children:[e.jsx("h4",{className:"font-medium mb-2",children:"راهنمای استفاده:"}),e.jsxs("ul",{className:"text-sm space-y-1 text-muted-foreground",children:[e.jsx("li",{children:'• برای دانلود فایل کامل از دکمه "دانلود فایل YAML" استفاده کنید'}),e.jsx("li",{children:'• برای مشاهده و تست API ها در محیط Swagger از دکمه "مشاهده در Swagger Editor" استفاده کنید'}),e.jsx("li",{children:"• فایل دانلود شده شامل تمام schemas، endpoints و مثال‌های مورد نیاز است"}),e.jsx("li",{children:"• می‌توانید این فایل را در ابزارهای مختلف مانند Postman، Insomnia یا Swagger UI استفاده کنید"})]})]})]})};export{N as A};
